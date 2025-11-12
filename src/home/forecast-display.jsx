@@ -1,16 +1,14 @@
 // Filename: ForecastDisplay.jsx
 
 import React, { useState, useEffect, useCallback } from "react";
-// Import the API fetching logic from the separate JS file
 import { fetchWeatherForecast } from "../api/weather/get-forecast.js";
-// NOTE: You would typically import './forecast-styles.css' here
+import "./forecast-styles.css"; // Don't forget to import your CSS!
 
 const DEFAULT_CITY = "London";
 
 // --- Sub-Component: ForecastCard ---
-// Simple component to display one day's weather data
+// This component displays a single day's weather data
 const ForecastCard = ({ data }) => {
-  // OpenWeatherMap icon URL structure
   const iconUrl = `https://openweathermap.org/img/wn/${data.icon}@2x.png`;
 
   return (
@@ -25,44 +23,35 @@ const ForecastCard = ({ data }) => {
 
 // --- Main Component: ForecastDisplay ---
 const ForecastDisplay = () => {
-  // 1. State for controlling user input and displayed city
   const [city, setCity] = useState(DEFAULT_CITY);
   const [inputCity, setInputCity] = useState(DEFAULT_CITY);
-
-  // 2. State for holding the forecast data
   const [forecast, setForecast] = useState([]);
-
-  // 3. States for user feedback (loading and errors)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Function to call the API logic and update state
   const loadForecast = useCallback(async (targetCity) => {
     if (!targetCity) return;
 
     setLoading(true);
-    setError(null); // Clear previous errors
-    setForecast([]); // Clear previous data
+    setError(null);
+    setForecast([]);
 
     try {
-      // CALL THE EXTERNAL JAVASCRIPT LOGIC
       const result = await fetchWeatherForecast(targetCity);
 
       setForecast(result.forecast);
-      setCity(result.city); // Use the city name returned by the API
+      setCity(result.city);
     } catch (err) {
-      setError(err.message); // Set the error message caught from the JS file
+      setError(err.message);
     } finally {
-      setLoading(false); // Stop loading regardless of success or failure
+      setLoading(false);
     }
   }, []);
 
-  // Effect runs ONCE on mount to load the default city
   useEffect(() => {
     loadForecast(DEFAULT_CITY);
   }, [loadForecast]);
 
-  // Handle search form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputCity.trim()) {
@@ -71,7 +60,7 @@ const ForecastDisplay = () => {
   };
 
   return (
-    <div className="weather-forecast-app">
+    <div className="weather-forecast-app-container">
       <h1 className="app-title">5-Day Weather Forecast</h1>
 
       <form onSubmit={handleSubmit} className="search-form">
@@ -87,26 +76,28 @@ const ForecastDisplay = () => {
         </button>
       </form>
 
-      <h2 className="city-header">Forecast for {city}</h2>
+      <h2 className="city-header">
+        Forecast for <span className="highlight-city">{city}</span>
+      </h2>
 
       {/* --- CONDITIONAL RENDERING --- */}
 
-      {/* 1. Loading State */}
+      {/* Loading State */}
       {loading && (
-        <div className="loading-state">
+        <div className="status-message loading-state">
           <div className="spinner"></div>
           <span>Fetching Forecast...</span>
         </div>
       )}
 
-      {/* 2. Error Message */}
+      {/* Error Message */}
       {error && (
-        <div className="error-message" role="alert">
+        <div className="status-message error-message" role="alert">
           <strong>Error:</strong> {error}
         </div>
       )}
 
-      {/* 3. Successful Data Display */}
+      {/* Successful Data Display */}
       {!loading && !error && forecast.length > 0 && (
         <div className="forecast-grid">
           {forecast.map((day, index) => (

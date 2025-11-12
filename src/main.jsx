@@ -9,8 +9,9 @@ import ForecastDisplay from "./home/forecast-display.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <SearchInput />
-    <ForecastDisplay />
     <CurrentWeatherDisplay />
+    <ForecastDisplay />
+
     <App />
   </StrictMode>
 );
