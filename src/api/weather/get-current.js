@@ -1,9 +1,9 @@
-import { API_KEY, cityName } from "../../home/utils/configs/api-config";
+import { API_KEY, DEFAULT_CITY } from "../../home/utils/configs/api-config";
 
 // const API_KEY = "7eab94c5cb9c0afb960e24d00e5cd75d"; // Replace with your actual key
 // const DEFAULT_CITY = "London";
 
-// Export the primary function to be used by your React component
+// Export the primary function to be used by React component
 export const fetchCurrentWeather = async (cityName = DEFAULT_CITY) => {
   const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`;
 
