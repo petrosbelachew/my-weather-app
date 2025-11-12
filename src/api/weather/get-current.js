@@ -1,9 +1,7 @@
-// Filename: weatherApi.js
+import { API_KEY, cityName } from "../../home/utils/configs/api-config";
 
-// --- Configuration Constants ---
-// Use your actual API key and desired city/URL format
-const API_KEY = "7eab94c5cb9c0afb960e24d00e5cd75d"; // Replace with your actual key
-const DEFAULT_CITY = "London";
+// const API_KEY = "7eab94c5cb9c0afb960e24d00e5cd75d"; // Replace with your actual key
+// const DEFAULT_CITY = "London";
 
 // Export the primary function to be used by your React component
 export const fetchCurrentWeather = async (cityName = DEFAULT_CITY) => {
