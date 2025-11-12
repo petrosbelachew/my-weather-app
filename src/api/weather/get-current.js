@@ -30,7 +30,7 @@ export const fetchCurrentWeather = async (cityName = DEFAULT_CITY) => {
 
     return extractedData;
   } catch (error) {
-    // Log the error for debugging and re-throw a simpler error for the component to handle
+    // Log the errorgit for debugging and re-throw a simpler error for the component to handle
     console.error("Error in fetchCurrentWeather:", error);
     throw new Error(error.message || "Failed to retrieve weather data.");
   }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // Import the asynchronous function from your new JS file
-import { fetchCurrentWeather } from "../api/weather/get-current.js";
+import { fetchCurrentWeather } from "../../api/weather/get-current.js";
+import "../current-weather/current-weather-styles.css";
 
 // NOTE: You can pass CITY_NAME as a prop if you want to make it reusable
 const INITIAL_CITY = "London";
