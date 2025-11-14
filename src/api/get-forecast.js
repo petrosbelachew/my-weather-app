@@ -1,9 +1,4 @@
-// Filename: get-forecast.js
-
-// --- CONFIGURATION ---
-const API_KEY = "7eab94c5cb9c0afb960e24d00e5cd75d"; // Replace with your actual key
-const BASE_URL = "https://api.openweathermap.org/data/2.5/forecast";
-// ---------------------
+import { BASE_URL, API_KEY, cityName } from "../home/utils/configs/api-config";
 
 /**
  * Extracts key daily data points from the raw 3-hourly forecast list.

@@ -1,10 +1,7 @@
-// Filename: ForecastDisplay.jsx
-
 import React, { useState, useEffect, useCallback } from "react";
-import { fetchWeatherForecast } from "../api/weather/get-forecast.js";
-import "./forecast-styles.css"; // Don't forget to import your CSS!
-
-const DEFAULT_CITY = "London";
+import { fetchWeatherForecast } from "../api/get-forecast.js";
+import "./forecast-styles.css"; //
+import { cityName } from "./utils/configs/api-config.js";
 
 // --- Sub-Component: ForecastCard ---
 // This component displays a single day's weather data
@@ -23,8 +20,8 @@ const ForecastCard = ({ data }) => {
 
 // --- Main Component: ForecastDisplay ---
 const ForecastDisplay = () => {
-  const [city, setCity] = useState(DEFAULT_CITY);
-  const [inputCity, setInputCity] = useState(DEFAULT_CITY);
+  const [city, setCity] = useState(cityName);
+  const [inputCity, setInputCity] = useState(cityName);
   const [forecast, setForecast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -49,7 +46,7 @@ const ForecastDisplay = () => {
   }, []);
 
   useEffect(() => {
-    loadForecast(DEFAULT_CITY);
+    loadForecast(cityName);
   }, [loadForecast]);
 
   const handleSubmit = (e) => {
