@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-// import { handleSubmit } from "../api/weather/get-current.js";
-
 import "./SearchInput.css";
 
 function SearchInput() {
