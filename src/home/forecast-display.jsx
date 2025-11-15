@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { fetchWeatherForecast } from "../api/get-forecast.js";
-import "./forecast-styles.css"; //
+import "./forecast-styles.css";
 import { cityName } from "./utils/configs/api-config.js";
 
 // --- Sub-Component: ForecastCard ---
