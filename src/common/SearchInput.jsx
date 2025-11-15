@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import "./SearchInput.css";
-
 function SearchInput() {
   return (
     <div className="weather-forecast-app-container">
