@@ -47,8 +47,8 @@ const CurrentWeatherApp = () => {
     setCurrentWeather(null);
 
     try {
-      // fetchWeatherForecast returns { city, current: {...data} }
-      const result = await fetchWeatherForecast(targetCity);
+      // fetchCurrentWeather returns { city, current: {...data} }
+      const result = await fetchCurrentWeather(targetCity);
 
       setCurrentWeather(result.current);
       setCity(result.city);

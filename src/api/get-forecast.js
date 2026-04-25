@@ -1,4 +1,8 @@
-import { BASE_URL, API_KEY, cityName } from "../home/utils/configs/api-config";
+import {
+  BASE_URL_FORCAST,
+  API_KEY,
+  cityName,
+} from "../home/utils/configs/api-config";
 
 /**
  * Extracts key daily data points from the raw 3-hourly forecast list.
@@ -46,7 +50,7 @@ const processForecastData = (list) => {
  * @throws {Error} Throws an error if the API request fails.
  */
 export const fetchWeatherForecast = async (cityName) => {
-  const apiUrl = `${BASE_URL}?q=${cityName}&units=metric&appid=${API_KEY}`;
+  const apiUrl = `${BASE_URL_FORCAST}?q=${cityName}&units=metric&appid=${API_KEY}`;
 
   try {
     const response = await fetch(apiUrl);
@@ -55,7 +59,7 @@ export const fetchWeatherForecast = async (cityName) => {
     if (!response.ok) {
       // Use the API's error message if available, or a generic one
       throw new Error(
-        data.message || `Could not find forecast for "${cityName}".`
+        data.message || `Could not find forecast for "${cityName}".`,
       );
     }
 
@@ -69,7 +73,7 @@ export const fetchWeatherForecast = async (cityName) => {
   } catch (error) {
     // Re-throw the error so the component can catch it and display a message
     throw new Error(
-      error.message || "A network error occurred while fetching data."
+      error.message || "A network error occurred while fetching data.",
     );
   }
 };

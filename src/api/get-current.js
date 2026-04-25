@@ -1,5 +1,5 @@
 import {
-  BASE_URL,
+  BASE_URL_CURRENT,
   cityName,
   API_KEY,
 } from "../home/utils/configs/api-config.js";
@@ -9,7 +9,7 @@ import {
  * @returns {object} Structured current weather data in a 'current' key.
  */
 export const fetchCurrentWeather = async (cityName) => {
-  const apiUrl = `${BASE_URL}?q=${cityName}&units=metric&appid=${API_KEY}`;
+  const apiUrl = `${BASE_URL_CURRENT}?q=${cityName}&units=metric&appid=${API_KEY}`;
 
   try {
     const response = await fetch(apiUrl);
@@ -17,8 +17,13 @@ export const fetchCurrentWeather = async (cityName) => {
 
     if (!response.ok) {
       throw new Error(
-        data.message || `Could not find weather for "${cityName}".`
+        data.message || `Could not find weather for "${cityName}".`,
       );
+    }
+
+    // Safety Check: Ensure 'main' and 'weather' exist before accessing properties
+    if (!data.main || !data.weather) {
+      throw new Error("Unexpected API response format.");
     }
 
     // Structure the data to match the expected result object
@@ -26,7 +31,7 @@ export const fetchCurrentWeather = async (cityName) => {
       city: data.name,
       current: {
         city: data.name,
-        temperature: data.main.temp,
+        temperature: Math.round(data.main.temp), // Rounding for cleaner UI
         condition: data.weather[0].description,
         humidity: data.main.humidity,
         windSpeed: data.wind.speed,
@@ -35,7 +40,7 @@ export const fetchCurrentWeather = async (cityName) => {
     };
   } catch (error) {
     throw new Error(
-      error.message || "A network error occurred while fetching data."
+      error.message || "A network error occurred while fetching data.",
     );
   }
 };
