@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { fetchCurrentWeather } from "../api/get-current.js";
 import { cityName } from "./utils/configs/api-config.js";
+import WeatherCard from "../components/weather-card.jsx";
 
 // --- Sub-Component: CurrentWeatherCard (Presentational JSX) ---
 // Displays current weather using the forecast's class names
@@ -8,25 +9,30 @@ const CurrentWeatherCard = ({ data }) => {
   const iconUrl = `https://openweathermap.org/img/wn/${data.icon}@2x.png`;
 
   return (
-    // Uses .forecast-card style for the wrapper
-    <div className="forecast-card current-weather-card">
-      {/* Display City Name using .card-date style */}
-      <p className="card-date">{data.city}</p>
-
-      <img src={iconUrl} alt={data.condition} className="card-icon" />
-
-      {/* Display Temperature using .card-temp style */}
-      <p className="card-temp">{data.temperature}°C</p>
-
-      {/* Weather Condition using .card-description style */}
-      <p className="card-description">{data.condition}</p>
-
-      {/* Additional details for current weather */}
-      <div className="current-details">
-        <p>Humidity: {data.humidity}%</p>
-        <p>Wind: {data.windSpeed} m/s</p>
-      </div>
+    <div className="current-weather-card">
+      {/* Pass the 'data' received from the API into the reusable WeatherCard */}
+      <WeatherCard data={data} title="Current Conditions" />
     </div>
+
+    // Uses .forecast-card style for the wrapper
+    // <div className="forecast-card current-weather-card">
+    //   {/* Display City Name using .card-date style */}
+    //   <p className="card-date">{data.date}</p>
+
+    //   <img src={iconUrl} alt={data.condition} className="card-icon" />
+
+    //   {/* Display Temperature using .card-temp style */}
+    //   <p className="card-temp">{data.temperature}°C</p>
+
+    //   {/* Weather Condition using .card-description style */}
+    //   <p className="card-description">{data.condition}</p>
+
+    //   {/* Additional details for current weather */}
+    //   <div className="current-details">
+    //     <p>Humidity: {data.humidity}%</p>
+    //     <p>Wind: {data.windSpeed} m/s</p>
+    //   </div>
+    // </div>
   );
 };
 
