@@ -61,9 +61,9 @@ e application using the standard Bun command:
 
 # Run the development server using Bun
 
-bun dev
 The application will start, usually accessible at http://localhost:5173/ (or another port if 5173 is in use).
 
 ```
+bun dev
 
 ```
