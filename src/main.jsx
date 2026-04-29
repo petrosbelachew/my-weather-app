@@ -9,6 +9,6 @@ import WeatherController from "./home/weather-controller..jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <WeatherController />
-    <App />
+    {/* <App /> */}
   </StrictMode>,
 );
