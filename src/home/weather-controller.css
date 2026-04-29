@@ -1,0 +1,61 @@
+.view-selector-form {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.modern-dropdown {
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #8da0a5;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+label {
+  font-size: large;
+  font-weight: 500;
+}
+.modern-dropdown:focus {
+  border-color: #0984e3;
+}
+
+.submit-view-btn {
+  padding: 10px 25px;
+  background-color: #0984e3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.submit-view-btn:hover {
+  background-color: #074b83;
+  transform: translateY(-2px);
+}
+
+/* Animation for the JSX Switch */
+.display-area {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -10,8 +10,8 @@
 
 /* Specific styling for the Forecast Grid cards */
 .forecast-view {
-  width: 180px; /* Smaller width for the 5-day grid */
-  padding: 10px;
+  width: 190px; /* Smaller width for the 5-day grid */
+  padding: 5px;
 }
 
 .forecast-view .card-temp {

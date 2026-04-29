@@ -12,7 +12,6 @@ const CurrentWeatherCard = ({ data }) => {
     <div className="current-weather-card">
       {/* Pass the 'data' received from the API into the reusable WeatherCard */}
       <WeatherCard data={data} isCurrent={true} />
-      console.log(" test", data);
     </div>
 
     // Uses .forecast-card style for the wrapper
