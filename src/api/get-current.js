@@ -30,7 +30,7 @@ export const fetchCurrentWeather = async (cityName) => {
     return {
       city: data.name,
       current: {
-        city: data.name,
+        date: data.date,
         temperature: Math.round(data.main.temp), // Rounding for cleaner UI
         condition: data.weather[0].description,
         humidity: data.main.humidity,

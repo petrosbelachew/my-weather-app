@@ -11,7 +11,8 @@ const CurrentWeatherCard = ({ data }) => {
   return (
     <div className="current-weather-card">
       {/* Pass the 'data' received from the API into the reusable WeatherCard */}
-      <WeatherCard data={data} title="Current Conditions" />
+      <WeatherCard data={data} isCurrent={true} />
+      console.log(" test", data);
     </div>
 
     // Uses .forecast-card style for the wrapper
@@ -89,7 +90,7 @@ const CurrentWeatherApp = () => {
           className="city-input"
         />
         <button type="submit" disabled={loading} className="search-button">
-          {loading ? "Searching..." : "Get Forecast"}
+          {loading ? "Searching..." : "Get Weather"}
         </button>
       </form>
 

@@ -1,0 +1,42 @@
+/* Shared Card Styles */
+.weather-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+/* Specific styling for the Forecast Grid cards */
+.forecast-view {
+  width: 180px; /* Smaller width for the 5-day grid */
+  padding: 10px;
+}
+
+.forecast-view .card-temp {
+  font-size: 1.4rem;
+  margin: 5px 0;
+}
+
+.forecast-view .card-icon {
+  width: 50px; /* Smaller icons for forecast */
+}
+
+/* Specific styling for the Main Current card */
+.current-view {
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.current-view .card-temp {
+  font-size: 3rem;
+}
+
+.card-description {
+  color: #0984e3;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
