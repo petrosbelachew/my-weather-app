@@ -1,4 +1,13 @@
 /* Global Reset and Font Setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  overflow-x: hidden; /* Prevents the horizontal scrollbar if something sticks out */
+}
 .app-main-container {
   font-family: "Inter", sans-serif;
   display: flex;
@@ -32,12 +41,17 @@
 /* Search Form Styles */
 .search-form {
   display: flex;
+  /* Stack items vertically on mobile */
+  flex-direction: column;
   width: 100%;
+  flex-wrap: wrap;
   max-width: 450px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  margin: 0 auto; /* Centers it */
+  padding: 20px;
 }
 
 .city-input {
@@ -46,6 +60,11 @@
   border: none;
   font-size: 1.1em;
   outline: none;
+  /* Add a bottom border on mobile to separate from button */
+  border-bottom: 1px solid #eee;
+  width: 100%; /* Try to fill the container */
+  max-width: 100%; /* Absolutely do not go past the edge */
+  display: block; /* Ensures it behaves like a box */
 }
 
 .search-button {
@@ -55,7 +74,10 @@
   border: none;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  width: 100%; /* Full width button on mobile */
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease;
 }
 
 .search-button:hover:not(:disabled) {
@@ -191,4 +213,33 @@
 .detail-item span {
   color: #4a90e2;
   font-weight: 700;
+}
+
+/* 1. Small Devices / Tablets (Portrait) */
+@media screen and (min-width: 481px) {
+  .city-input {
+    max-width: 400px;
+  }
+}
+
+/* 3. Medium Devices / Tablets (Landscape) / Laptops */
+@media screen and (min-width: 769px) {
+  .container {
+    display: flex;
+    max-width: 750px;
+  }
+}
+
+/* 4. Large Devices / Desktops */
+@media screen and (min-width: 1025px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+/* 5. Extra Large Devices / High-Res Monitors */
+@media screen and (min-width: 1201px) {
+  .container {
+    max-width: 1200px;
+  }
 }
